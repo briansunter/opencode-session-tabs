@@ -1,0 +1,19 @@
+{
+  "name": "opencode-session-tabs",
+  "version": "0.1.0",
+  "description": "Let OpenCode 2.0 sessions open existing sessions as TUI tabs through a tool call.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/briansunter/opencode-session-tabs.git"
+  },
+  "keywords": ["opencode", "opencode-plugin", "session", "tabs", "tui"],
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./tui": "./tui.ts"
+  },
+  "scripts": {
+    "test": "bun test"
+  }
+}
