@@ -1,0 +1,9 @@
+# Compiles the plugin's Solid .tsx (picker.tsx, picker-ui.test.tsx) with the
+# same babel-preset-solid transform the OpenCode TUI host installs for plugin
+# sources (@opentui/solid/preload → bun-plugin-solid). The host loads plugin
+# entrypoints with this transform pre-registered; local `bun test` needs the
+# preload to do the same. Inert everywhere else.
+preload = ["@opentui/solid/preload"]
+
+[test]
+preload = ["@opentui/solid/preload"]

@@ -1,19 +1,41 @@
 {
   "name": "opencode-session-tabs",
-  "version": "0.1.0",
-  "description": "Let OpenCode 2.0 sessions open existing sessions as TUI tabs through a tool call.",
+  "version": "0.4.0",
+  "description": "OpenCode 2.0 session tabs: an agent tool, a batch-open session picker with a persistent search, inline previews, and saved session sets (workspaces) for the TUI.",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/briansunter/opencode-session-tabs.git"
   },
-  "keywords": ["opencode", "opencode-plugin", "session", "tabs", "tui"],
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "session",
+    "tabs",
+    "tui",
+    "workspaces"
+  ],
   "type": "module",
   "exports": {
     ".": "./index.ts",
     "./tui": "./tui.ts"
   },
   "scripts": {
-    "test": "bun test"
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@opentui/core": ">=0.5.8",
+    "@opentui/solid": ">=0.5.8",
+    "solid-js": ">=1.9.0"
+  },
+  "devDependencies": {
+    "@opencode/client": "2.0.30",
+    "@opencode/plugin": "2.0.30",
+    "@opentui/core": ">=0.5.8",
+    "@opentui/solid": ">=0.5.8",
+    "@types/node": "^26.6.5",
+    "solid-js": ">=1.9.0",
+    "typescript": "^7.0.2"
   }
 }

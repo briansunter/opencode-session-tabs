@@ -7,11 +7,26 @@ const sessions = {
   minItems: 1,
   maxItems: 20,
 }
+const timestamp = { type: "number" }
+const workspace = {
+  type: "object",
+  properties: {
+    name: string,
+    sessionIDs: sessions,
+    createdAt: timestamp,
+    updatedAt: timestamp,
+  },
+  required: ["name", "sessionIDs", "createdAt", "updatedAt"],
+  additionalProperties: false,
+}
 
 export const openInput = {
   type: "object",
-  properties: { sessionIDs: sessions, focus: { type: "boolean" } },
-  required: ["sessionIDs"],
+  properties: {
+    sessionIDs: sessions,
+    focus: { type: "boolean" },
+    workspace: string,
+  },
   additionalProperties: false,
 }
 
@@ -68,6 +83,42 @@ export const SessionTabs = Rpc.define({
           error: { type: "string" },
         },
         required: ["requestID", "clientID", "opened", "alreadyOpen", "focused"],
+        additionalProperties: false,
+      },
+    },
+    workspaceList: {
+      output: {
+        type: "object",
+        properties: { workspaces: { type: "array", items: workspace } },
+        required: ["workspaces"],
+        additionalProperties: false,
+      },
+      input: {
+        type: "object",
+        properties: {},
+        additionalProperties: false,
+      },
+    },
+    workspaceSave: {
+      output: workspace,
+      input: {
+        type: "object",
+        properties: { name: string, sessionIDs: sessions },
+        required: ["name", "sessionIDs"],
+        additionalProperties: false,
+      },
+    },
+    workspaceRemove: {
+      output: {
+        type: "object",
+        properties: { removed: { type: "boolean" } },
+        required: ["removed"],
+        additionalProperties: false,
+      },
+      input: {
+        type: "object",
+        properties: { name: string },
+        required: ["name"],
         additionalProperties: false,
       },
     },
